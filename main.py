@@ -1,22 +1,22 @@
 import pygame
-# Инициализация на Pygame
+# Initialize Pygame
 pygame.init()
 
-# Настройки на екрана
+# Screen settings
 screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Memory Game")
 
-# Цветове
+# Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GRAY = (200, 200, 200)
 LIGHT_GRAY = (170, 170, 170)
 
-# Размери на квадратите
+# Square dimensions
 square_size = 100
 margin = 10
 
-# Генериране на позиции за квадратите
+# Generate positions for squares
 def generate_positions(rows, cols, square_size, margin):
     positions = []
     for row in range(rows):
@@ -26,11 +26,11 @@ def generate_positions(rows, cols, square_size, margin):
             positions.append((x, y))
     return positions
 
-# Основна логика на играта
+# Main game logic
 def main():
     running = True
-    positions = generate_positions(4, 6, square_size, margin)  # 4 реда и 6 колони
-    clicked_squares = [False] * 24  # Списък за следене на състоянието на квадратите
+    positions = generate_positions(4, 6, square_size, margin)  # 4 rows and 6 columns
+    clicked_squares = [False] * 24  # List to track the state of the squares
 
     while running:
         for event in pygame.event.get():
@@ -45,7 +45,7 @@ def main():
 
         screen.fill(WHITE)
 
-        # Рисуване на квадратите
+        # Draw the squares
         for i, pos in enumerate(positions):
             color = LIGHT_GRAY if clicked_squares[i] else GRAY
             pygame.draw.rect(screen, color, (*pos, square_size, square_size))
